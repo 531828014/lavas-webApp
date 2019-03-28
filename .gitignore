@@ -1,0 +1,15 @@
+.DS_Store
+._.DS_Store
+node_modules
+*.log
+*.tmp
+*.swp
+.idea
+dist
+tmp
+coverage
+.nyc_output
+package-lock.json
+packages/lavas-core-vue/test/fixtures/**/dist
+packages/lavas-core-vue/test/fixtures/**/.lavas
+packages/lavas-core-vue/test/temp

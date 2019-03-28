@@ -1,0 +1,13 @@
+@import '~normalize.css';
+@import '../css/iconfont.css';
+@import './variable.scss';
+html, body {
+    height: 100%;
+    font-size: $font-size-small;
+}
+img {
+    border-radius: $border-radius;
+}
+.last-box {
+    padding-bottom: 50px;
+}

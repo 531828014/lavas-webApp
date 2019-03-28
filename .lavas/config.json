@@ -1,0 +1,35 @@
+{
+    "buildVersion": 1553734953925,
+    "build": {
+        "ssr": false,
+        "publicPath": "/",
+        "compress": false,
+        "cssExtract": false
+    },
+    "middleware": {
+        "all": [],
+        "server": [],
+        "client": []
+    },
+    "router": {
+        "mode": "history",
+        "base": "/",
+        "pageTransition": {
+            "type": "fade",
+            "transitionClass": "fade"
+        }
+    },
+    "errorHandler": {
+        "defaultErrorMessage": "Internal Server Error",
+        "showRealErrorMessage": false,
+        "errorPath": "/error"
+    },
+    "serviceWorker": {
+        "enable": true,
+        "swDest": "C:\\Users\\wuzj\\Desktop\\webApp\\pwa-project\\dist\\service-worker.js"
+    },
+    "skeleton": {
+        "enable": true,
+        "asyncCSS": true
+    }
+}

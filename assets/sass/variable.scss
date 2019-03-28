@@ -1,0 +1,25 @@
+// 字体定义规范
+
+$font-size-small: 12px !important !global;
+$font-size-medium: 16px !important !global;
+$font-size-large: 24px !important !global;
+$font-size-max: 32px !important !global;
+
+// 间距
+$spacing-xs: 10px;
+$spacing-sm: 15px;
+$spacing-md: 20px;
+$spacing-lg: 25px;
+$spacing-xl: 30px;
+
+// 主题色
+$color-theme-primary: rgb(64, 158, 255);
+$color-theme-gray: rgb(240,242,245);
+$color-theme-black: rgb(60,67,83);
+$color-theme-red: rgb(245,108,108);
+$color-theme-info: rgb(144,147,153);
+$color-theme-success: rgb(103,194,58);
+$color-theme-el-gray: #E4E7ED;
+
+//边角弧度
+$border-radius: 7px;
