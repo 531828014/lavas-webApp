@@ -1,5 +1,5 @@
 {
-    "buildVersion": 1553734953925,
+    "buildVersion": 1553765576201,
     "build": {
         "ssr": false,
         "publicPath": "/",
@@ -26,7 +26,7 @@
     },
     "serviceWorker": {
         "enable": true,
-        "swDest": "C:\\Users\\wuzj\\Desktop\\webApp\\pwa-project\\dist\\service-worker.js"
+        "swDest": "C:\\Users\\wuzj\\Desktop\\webApp\\lavas-webApp\\dist\\service-worker.js"
     },
     "skeleton": {
         "enable": true,

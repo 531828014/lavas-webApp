@@ -5,7 +5,7 @@
             <van-col span="2">
                 <van-checkbox class="checkbox" :name="item" checked-color="#07c160"></van-checkbox>
             </van-col>
-            <van-col span="6">
+            <van-col span="7">
                 <div class="img-box">
                     <img class="box-img" v-lazy="image" height="180" width="92%"/>
                 </div>
@@ -17,7 +17,7 @@
                     <h3 class="money">￥3299</h3>
                 </div>
             </van-col>
-            <van-col span="8">
+            <van-col span="7">
                 <van-stepper class="number" v-model="value" />
             </van-col>
         </van-row>
@@ -70,15 +70,20 @@ export default {
     }
     .number{
         width: 100%;
-        margin-top: 50px;
+        margin-top: 56px;
         text-align: right;
         /deep/ .van-stepper__minus, /deep/ .van-stepper__plus{
-            width: 10px !important;
-            height: 10px !important;
+            width: 18px !important;
+            height: 18px !important;
+        }
+        /deep/ .van-stepper__input{
+            font-size: 12px;
+            height: 16px;
         }
     }
     .money{
         color: #F43736;
+        margin-bottom: 0 !important;
     }
 }
 </style>
