@@ -7,8 +7,10 @@
             <van-col span="24">
                <div class="boderBox"></div> 
             </van-col>
-            <van-col span="24">
+            <van-col span="24" class="bottomBox">
                 <van-checkbox-group v-model="result" @change="changeCheck">
+                    <card-list></card-list>
+                    <card-list></card-list>
                     <card-list></card-list>
                 </van-checkbox-group>
             </van-col>
@@ -65,6 +67,9 @@ export default {
     .boderBox{
         border: 0.1px solid #E5E5E5;
         margin: 10px 15px 0 15px;
+    }
+    .bottomBox{
+        margin-bottom: 50px;
     }
 }
 </style>

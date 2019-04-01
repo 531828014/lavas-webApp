@@ -2,64 +2,74 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
     
-import _15537655762239d49a922ebc8a6d77ca82c0a74289b98 from '@/pages/Appshell.vue';
+import _15541012688709d49a922ebc8a6d77ca82c0a74289b98 from '@/pages/Appshell.vue';
     
 
     
-import _1553765576223d2462dcf0c7beccd286c658e08187914 from '@/pages/Error.vue';
+import _1554101268870cd64960f6a8329d0b9f6f14f0e4377b0 from '@/pages/commodity-details/commodity-details.vue';
     
 
     
-import _1553765576223eea99934ecc5e765d5736c35f83c1614 from '@/pages/home/classification.vue';
+import _1554101268870d2462dcf0c7beccd286c658e08187914 from '@/pages/Error.vue';
     
 
     
-import _15537655762239f95ef222a6266ff3feeaf6e90743c57 from '@/pages/home/Index.vue';
+import _1554101268870eea99934ecc5e765d5736c35f83c1614 from '@/pages/home/classification.vue';
     
 
     
-import _155376557622362a9da8e9a5730214b9c96eed7202276 from '@/pages/home/personalCenter.vue';
+import _15541012688709f95ef222a6266ff3feeaf6e90743c57 from '@/pages/home/Index.vue';
     
 
     
-import _155376557622396f3045a67f46b47bd58909ab9906ea0 from '@/pages/home/shoppingCart.vue';
+import _155410126887062a9da8e9a5730214b9c96eed7202276 from '@/pages/home/personalCenter.vue';
+    
+
+    
+import _155410126887096f3045a67f46b47bd58909ab9906ea0 from '@/pages/home/shoppingCart.vue';
     
 
 
 let routes = [
     {
         "path": "/appshell",
-        "component": _15537655762239d49a922ebc8a6d77ca82c0a74289b98,
+        "component": _15541012688709d49a922ebc8a6d77ca82c0a74289b98,
         "meta": {},
         "name": "appshell"
     },
     {
+        "path": "/commodity-details/commodity-details",
+        "component": _1554101268870cd64960f6a8329d0b9f6f14f0e4377b0,
+        "meta": {},
+        "name": "commodity-detailsCommodity-details"
+    },
+    {
         "path": "/home/classification",
-        "component": _1553765576223eea99934ecc5e765d5736c35f83c1614,
+        "component": _1554101268870eea99934ecc5e765d5736c35f83c1614,
         "meta": {},
         "name": "homeClassification"
     },
     {
         "path": "/home",
-        "component": _15537655762239f95ef222a6266ff3feeaf6e90743c57,
+        "component": _15541012688709f95ef222a6266ff3feeaf6e90743c57,
         "meta": {},
         "name": "home"
     },
     {
         "path": "/home/personal-center",
-        "component": _155376557622362a9da8e9a5730214b9c96eed7202276,
+        "component": _155410126887062a9da8e9a5730214b9c96eed7202276,
         "meta": {},
         "name": "homePersonalCenter"
     },
     {
         "path": "/home/shopping-cart",
-        "component": _155376557622396f3045a67f46b47bd58909ab9906ea0,
+        "component": _155410126887096f3045a67f46b47bd58909ab9906ea0,
         "meta": {},
         "name": "homeShoppingCart"
     },
     {
         "path": "/error",
-        "component": _1553765576223d2462dcf0c7beccd286c658e08187914,
+        "component": _1554101268870d2462dcf0c7beccd286c658e08187914,
         "meta": {},
         "name": "error",
         "alias": "*"

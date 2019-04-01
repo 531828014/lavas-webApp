@@ -44,8 +44,10 @@
                 <div class="newImg" 
                     v-for="(img, index) in imageList" 
                     :key="index">
+                    <a href="/commodity-details/commodity-details">
                     <img v-lazy="img.img"  />
                     <p>{{img.title}}</p>
+                    </a>
                 </div>
             </van-row>
             <van-row>
