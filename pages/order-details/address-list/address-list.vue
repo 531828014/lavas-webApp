@@ -44,6 +44,9 @@ export default {
 
     methods: {
         onAdd() {
+            this.$router.push({
+                path: '/order-details/address-editor/address-editor'
+            })
         },
 
         onEdit(item, index) {
