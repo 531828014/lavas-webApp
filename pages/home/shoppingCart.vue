@@ -15,6 +15,13 @@
                 </van-checkbox-group>
             </van-col>
         </van-row>
+        <van-submit-bar
+            :price="3050"
+            button-text="去结算"
+            @submit="onSubmit"
+            >
+        <van-checkbox v-model="checked" @change="changeAll">全选</van-checkbox>
+        </van-submit-bar>
         <Tabbar ref="tabbar"></Tabbar>
     </div>
 </template>
@@ -36,7 +43,8 @@ export default {
     data() {
         return {
             imageURL: 'https://img.yzcdn.cn/2.jpg',
-            result: []
+            result: [],
+            checked: false
         }
     },
     async asyncData({store, route}) {
@@ -52,6 +60,12 @@ export default {
     methods: {
         changeCheck(res) {
             console.log(res)
+        },
+        onSubmit() {
+            console.log(1111)
+        },
+        changeAll() {
+            console.log('All')
         }
     }
 };
@@ -70,6 +84,13 @@ export default {
     }
     .bottomBox{
         margin-bottom: 50px;
+    }
+    /deep/ .van-submit-bar {
+        bottom: 50px;
+        border-bottom: 0.1px solid #E5E5E5;
+        /deep/ .van-checkbox{
+            margin-left: 15px;
+        }
     }
 }
 </style>

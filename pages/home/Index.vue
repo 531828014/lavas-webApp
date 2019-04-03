@@ -14,26 +14,26 @@
             <van-row>
                 <van-col span="6">
                     <div class="div-row">
-                        <van-icon class="icon-row" name="friends-o" style="background-color:#FF6161;"/>
+                        <van-icon class="icon-row" name="fire-o" style="background-color:#FF6161;"/>
                         <span>大师访谈</span>
                     </div>
                 </van-col>
                 <van-col span="6">
                     <div class="div-row">
-                        <van-icon class="icon-row" name="friends-o" style="background-color:#689BFF;" />
+                        <van-icon class="icon-row" name="medel-o" style="background-color:#689BFF;" />
                         <span>匠心小组</span>
                     </div>
                 </van-col>
                 <van-col span="6">
                     <div class="div-row">
-                        <van-icon class="icon-row" name="friends-o" 
+                        <van-icon class="icon-row" name="flag-o" 
                         style="background-color:#F9AA12;"/>
                         <span>互动平台</span>
                     </div>
                 </van-col>
                 <van-col span="6">
                     <div class="div-row">
-                        <van-icon class="icon-row" name="friends-o"
+                        <van-icon class="icon-row" name="gem-o"
                         style="background-color:#00CCC0;" />
                         <span>推荐设计师</span>
                     </div>

@@ -8,7 +8,7 @@
                 <van-search class="searchW" placeholder="请输入搜索关键词" v-model="keyValue" @search="onSearch"/>
             </van-col>
             <van-col  span="24">
-                <a href="#">
+                <a href="/commodity-list/commodity-list">
                     <div class="class-boxs">
                         <van-icon class="icon-row" name="friends-o"/>
                         <h4>精致包袋</h4>
