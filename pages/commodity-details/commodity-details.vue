@@ -56,13 +56,13 @@
         <!-- 加入购物车 -->
         <van-goods-action>
             <van-goods-action-mini-btn
-                icon="chat-o"
-                text="客服"
-                @click="onClickMiniBtn"
+                icon="shop-o"
+                text="店铺"
             />
             <van-goods-action-mini-btn
                 icon="cart-o"
                 text="购物车"
+                url="/home/shopping-cart"
                 @click="onClickMiniBtn"
             />
             <van-goods-action-big-btn
