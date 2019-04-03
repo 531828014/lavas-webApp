@@ -62,7 +62,9 @@ export default {
             console.log(res)
         },
         onSubmit() {
-            console.log(1111)
+            this.$router.push({
+                path: '/order-details/order-details'
+            })
         },
         changeAll() {
             console.log('All')
