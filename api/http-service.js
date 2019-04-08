@@ -106,34 +106,3 @@ export function post(url, data = {}) {
             })
     })
 }
-
-/**
-* 下面是获取数据的接口
-*/
-import {postIndex} from './indexApi/index'
-export const server = {
-    //首页
-    index: {
-        exam(paramObj) {
-            return new Promise((resolve, reject) => {
-                postIndex(paramObj).then(data => {
-                    resolve(data)
-                }).catch(() => {
-                    reject()
-                })
-            })
-        }
-    },
-    //品类
-    classification: {
-
-    },
-    //个人中心页
-    personalCenter: {
-
-    },
-    //购物车页
-    shoppingCart: {
-
-    }
-}

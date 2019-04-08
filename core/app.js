@@ -12,13 +12,11 @@ import AppComponent from './App.vue';
 import Vant, { Lazyload } from 'vant';
 import '@/assets/sass/index.scss';
 import 'vant/lib/index.css';
-import {server} from '../api/http-service'
 
 Vue.use(Lazyload);
 Vue.use(Vant);
 Vue.use(Meta);
 
-Vue.prototype.$server = server;
 Vue.config.productionTip = false;
 
 export function createApp() {

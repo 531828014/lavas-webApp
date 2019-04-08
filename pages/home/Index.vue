@@ -77,6 +77,7 @@
 <script>
 function setState(store) {}
 import Tabbar from '../../components/common/tabbar'
+import {postIndex} from '../../api/indexApi/index'
 export default {
     name: 'index',
     metaInfo: {
@@ -121,7 +122,7 @@ export default {
         let paramObj = {
             uid: '123456'
         }
-        this.$server.index.exam(paramObj).then(data => {
+        postIndex(paramObj).then(data => {
             console.log(data)
         })
     },
