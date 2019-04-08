@@ -117,6 +117,14 @@ export default {
     async asyncData({store, route}) {
         setState(store);
     },
+    created() {
+        let paramObj = {
+            uid: '123456'
+        }
+        this.$server.index.exam(paramObj).then(data => {
+            console.log(data)
+        })
+    },
     mounted() {
         this.$refs.tabbar.active = 0
     },

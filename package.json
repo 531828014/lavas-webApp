@@ -17,6 +17,7 @@
     "dependencies": {
         "array-includes": "^3.0.3",
         "array.prototype.find": "^2.0.4",
+        "axios": "^0.18.0",
         "es6-promise": "^4.1.1",
         "express": "^4.0.0",
         "lavas-core-vue": "^1.2.0",
