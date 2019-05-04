@@ -9,7 +9,7 @@ export default function() {
         $ajax_fetch(option).then(data => {
             if (data) {
                 let ret = {}
-                ret.list = data.data ? data.data.map(item => createGoods ({
+                ret.list = data.data.data ? data.data.data.map(item => createGoods ({
                     id: item.Id,
                     title: item.title, 
                     briefIntroduction: item.briefIntroduction, 

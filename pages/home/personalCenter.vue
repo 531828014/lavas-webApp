@@ -39,7 +39,7 @@
                     <van-cell class= "cellList" icon="bill-o" title="我的订单" is-link to="/order-list/order-list?type=0" />
                     <van-cell class= "cellList" icon="label-o" title="已发货" is-link to="/order-list/order-list?type=1" />
                     <van-cell class= "cellList" icon="bookmark-o" title="待发货" is-link to="/order-list/order-list?type=2" />
-                    <van-cell class= "cellList" icon="orders-o" title="已签收" is-link to="/order-list/order-list?type=3" />
+                    <!-- <van-cell class= "cellList" icon="orders-o" title="已签收" is-link to="/order-list/order-list?type=3" /> -->
                     <van-cell class= "cellList" icon="bulb-o" title="设计师通道" is-link to="#" />
                     <van-cell class= "cellList" icon="apps-o" title="尚未开放" is-link />
                     <van-cell class= "cellList" icon="ellipsis" title="关于我们" is-link to="/home" />

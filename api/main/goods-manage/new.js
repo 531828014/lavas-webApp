@@ -1,20 +1,22 @@
 import {$ajax_fetch} from '../../http-service'
-import {createCategory} from '../../model/category'
-
+import {createGoods} from '../../model/goods'
 //
 export default function() {
     return new Promise ((resolve, reject) => {
         let option = {
-            url: '/Category/List',
+            url: '/Commodity/New',
         }
         $ajax_fetch(option).then(data => {
             if (data) {
                 let ret = {}
-                ret.list = data.data.data ? data.data.data.map(item => createCategory ({
+                ret.list = data.data.data ? data.data.data.map(item => createGoods ({
                     id: item.Id,
-                    name: item.name,
-                    category: item.category,
-                    icon: item.icon
+                    title: item.title, 
+                    imgUrl: item.imgUrl ? item.imgUrl.map(url => {
+                        return{
+                            url: 'http://localhost:5699/' + url
+                        }
+                    }) : []
                 })) : []
                 resolve(ret)
             }else {

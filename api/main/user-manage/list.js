@@ -10,7 +10,7 @@ export default function() {
         $ajax_fetch(option).then(data => {
             if (data) {
                 let ret = {}
-                ret.list = data.data ? data.data.map(item => createUser ({
+                ret.list = data.data.data ? data.data.data.map(item => createUser ({
                     id: item.Id,
                     number: item.number, 
                     password: item.password, 

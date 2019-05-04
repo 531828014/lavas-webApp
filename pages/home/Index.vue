@@ -13,33 +13,39 @@
             </van-col>
             <van-row>
                 <van-col span="6">
+                    <router-link to="/commodity-list/commodity-list">
                     <div class="div-row">
                         <van-icon class="icon-row" name="fire-o" style="background-color:#FF6161;"/>
-                        <span>大师访谈</span>
+                        <span>商品列表</span>
                     </div>
+                    </router-link>
                 </van-col>
                 <van-col span="6">
+                    <a href="#jxsj">
                     <div class="div-row">
                         <van-icon class="icon-row" name="medel-o" style="background-color:#689BFF;" />
-                        <span>匠心小组</span>
+                        <span>精选设计</span>
                     </div>
+                    </a>
                 </van-col>
                 <van-col span="6">
+                    <a href="#jrsx">
                     <div class="div-row">
                         <van-icon class="icon-row" name="flag-o" 
                         style="background-color:#F9AA12;"/>
-                        <span>互动平台</span>
+                        <span>今日上新</span>
                     </div>
+                    </a>
                 </van-col>
                 <van-col span="6">
                     <div class="div-row">
                         <van-icon class="icon-row" name="gem-o"
                         style="background-color:#00CCC0;" />
-                        <span>推荐设计师</span>
+                        <span>尚未开放</span>
                     </div>
                 </van-col>
             </van-row>
-            <van-row>
+            <van-row id="jrsx">
                 <h3 class="titleH3">今日上新</h3>
                 <div class="newImg" 
                     v-for="(img, index) in imageList" 
@@ -59,7 +65,7 @@
                     <p>{{img.title}}</p>
                 </div>
             </van-row>
-            <van-row class="last-box">
+            <van-row class="last-box" id="jxsj">
                 <h3 class="titleH3">精选设计</h3>
                 <div class="carefully" 
                     v-for="(img, index) in imageList" 
@@ -76,55 +82,26 @@
 
 <script>
 function setState(store) {}
+import GoodsApi from '../../api/main/goods-manage/index'
 import Tabbar from '../../components/common/tabbar'
-import {postIndex} from '../../api/indexApi/index'
 export default {
     name: 'index',
     metaInfo: {
         title: 'Home',
-        titleTemplate: '',
-        meta: [
-            {name: 'keywords', content: ''},
-            {name: 'description', content: ''}
-        ]
     },
     data() {
         return{
             keyValue: '',
-            imageList: [
-                {
-                    img: 'https://img.yzcdn.cn/2.jpg',
-                    title: '2019年将辛运大厦'
-                },
-                {
-                    img: 'https://img.yzcdn.cn/2.jpg',
-                    title: '2019年将辛运大厦'
-                },
-                {
-                    img: 'https://img.yzcdn.cn/2.jpg',
-                    title: '2019年将辛运大厦'
-                },
-                {
-                    img: 'https://img.yzcdn.cn/2.jpg',
-                    title: '2019年将辛运大厦'
-                },
-            ],
-            images: [
-                'https://img.yzcdn.cn/2.jpg',
-                'https://img.yzcdn.cn/2.jpg'
-            ]
+            imageList: [],
+            images: [],
+            allList: [],
         }
     },
     async asyncData({store, route}) {
         setState(store);
     },
     created() {
-        let paramObj = {
-            uid: '123456'
-        }
-        postIndex(paramObj).then(data => {
-            console.log(data)
-        })
+        this.getData()
     },
     mounted() {
         this.$refs.tabbar.active = 0
@@ -136,6 +113,27 @@ export default {
         //搜索关键字
         onSearch(row) {
 
+        },
+        getData() {
+            Promise.all([GoodsApi.Carousel(),GoodsApi.New()]).then(data => {
+                console.log(data)
+                data[0].list.forEach(item => {
+                    let opt = {
+                        img: item.imgUrl[0].url,
+                        title: item.title
+                    }
+                    this.images.push(item.imgUrl[0].url)
+                    this.allList.push(opt)
+                });
+                data[1].list.forEach(item => {
+                    let opt = {
+                        img: item.imgUrl[0].url,
+                        title: item.title
+                    }
+                    this.imageList.push(opt)
+                    this.allList.push(opt)
+                });
+            })
         }
     }
     
