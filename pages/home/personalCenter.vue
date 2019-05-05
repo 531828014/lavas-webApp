@@ -8,7 +8,7 @@
                             <img class="box-img" v-lazy="image" height="180" width="92%"/>
                         </div>
                         <div class="boxs-right">
-                            <h3>杨礼锦</h3>
+                            <h3>{{$store.state.userInfo.name}}</h3>
                             <span>设计是一种感受、一种心态</span>
                         </div>
                     </div>
@@ -67,6 +67,9 @@ export default {
         return {
             image: 'https://img.yzcdn.cn/2.jpg'
         }
+    },
+    created() {
+        console.log(this.$store.state.userInfo)
     },
     async asyncData({store, route}) {
         setState(store);

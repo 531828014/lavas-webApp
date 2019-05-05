@@ -10,8 +10,10 @@
             <van-col  span="24">
                 <div class="class-boxs" v-for="item in list"
                     :key="item.id">
+                    <router-link to="/commodity-list/commodity-list">
                     <van-icon class="icon-row" :name="item.icon"/>
                     <h4>{{item.name}}</h4>
+                    </router-link>
                 </div>
             </van-col>
         </van-row>

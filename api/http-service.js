@@ -1,21 +1,25 @@
 import axios from 'axios'
-
+import {getUserInfo} from '../utils/storage'
 axios.defaults.timeout = 5000;
 axios.defaults.baseURL = 'http://localhost:5699/'; //填写域名
+axios.defaults.headers['Content-Type'] = 'application/json'
 
-//http request 拦截器
-axios.interceptors.request.use(
-    config => {
-        config.data = JSON.stringify(config.data);
-        config.headers = {
-            'Content-Type': 'application/x-www-form-urlencoded'
+// 设置请求拦截器
+axios.interceptors.request.use(config => {
+    if (config.method === 'post') {
+        if (!config.data.noCarryToken && config.data.noCarryToken !== true) {
+            config.headers.Authorization = 'bearer ' + getUserInfo().token
         }
-        return config;
-    },
-    error => {
-        return Promise.reject(err);
     }
-);
+    if (config.method === 'get') {
+        if (!config.params.noCarryToken && config.params.noCarryToken !== true) {
+            config.headers.Authorization = 'bearer ' + getUserInfo().token
+        }
+    }
+    return config
+}, err => {
+    console.log(err)
+})
 
 //响应拦截器即异常处理
 axios.interceptors.response.use(response => {

@@ -2,6 +2,7 @@
 <template>
     <div class="commodity">
         <div  class="commoditybox" v-for="item in listData" :key="item.id">
+            <router-link :to="`/commodity-details/commodity-details?ld=${item.id}`">
             <div class="commodity-img">
                 <img :src="item.imgUrl[0].url" alt="">
             </div>
@@ -11,6 +12,7 @@
                     <span class="money-red">￥{{item.sellingPrice}}</span>
                 </h3>
             </div>
+            </router-link>
         </div>
         
     </div>
@@ -24,8 +26,8 @@ export default {
     },
     props: {
         listData: {
-            type: Object,
-            default: null
+            type: Array,
+            default: () => []
         }
     },
     methods: {}

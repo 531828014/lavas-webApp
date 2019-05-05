@@ -7,7 +7,9 @@
             <van-col span="24">
                 <van-swipe :autoplay="3000" :height="180">
                     <van-swipe-item v-for="(image, index) in images" :key="index">
-                        <img v-lazy="image" height="180" width="92%"/>
+                        <router-link :to="`/commodity-details/commodity-details?ld=${image.id}`">
+                        <img v-lazy="image.img" height="180" width="92%"/>
+                        </router-link>
                     </van-swipe-item>
                 </van-swipe>
             </van-col>
@@ -50,28 +52,32 @@
                 <div class="newImg" 
                     v-for="(img, index) in imageList" 
                     :key="index">
-                    <a href="/commodity-details/commodity-details">
+                    <router-link :to="`/commodity-details/commodity-details?ld=${img.id}`">
                     <img v-lazy="img.img"  />
                     <p>{{img.title}}</p>
-                    </a>
+                    </router-link>
                 </div>
             </van-row>
             <van-row>
                 <h3 class="titleH3">推荐设计</h3>
                 <div class="recommend" 
-                    v-for="(img, index) in imageList" 
+                    v-for="(img, index) in imageList2" 
                     :key="index">
+                    <router-link :to="`/commodity-details/commodity-details?ld=${img.id}`">
                     <img v-lazy="img.img"  />
                     <p>{{img.title}}</p>
+                    </router-link>
                 </div>
             </van-row>
             <van-row class="last-box" id="jxsj">
                 <h3 class="titleH3">精选设计</h3>
                 <div class="carefully" 
-                    v-for="(img, index) in imageList" 
+                    v-for="(img, index) in allList" 
                     :key="index">
+                    <router-link :to="`/commodity-details/commodity-details?ld=${img.id}`">
                     <img v-lazy="img.img"  />
                     <h3>{{img.title}}</h3>
+                    </router-link>
                 </div>
             </van-row>
         </van-row>
@@ -93,6 +99,7 @@ export default {
         return{
             keyValue: '',
             imageList: [],
+            imageList2: [],
             images: [],
             allList: [],
         }
@@ -102,6 +109,7 @@ export default {
     },
     created() {
         this.getData()
+        console.log(this.$store.state.userInfo)
     },
     mounted() {
         this.$refs.tabbar.active = 0
@@ -119,14 +127,17 @@ export default {
                 console.log(data)
                 data[0].list.forEach(item => {
                     let opt = {
+                        id: item.id,
                         img: item.imgUrl[0].url,
                         title: item.title
                     }
-                    this.images.push(item.imgUrl[0].url)
+                    this.imageList2.push(opt)
+                    this.images.push(opt)
                     this.allList.push(opt)
                 });
                 data[1].list.forEach(item => {
                     let opt = {
+                        id: item.id,
                         img: item.imgUrl[0].url,
                         title: item.title
                     }
