@@ -40,7 +40,7 @@
                     <van-cell class= "cellList" icon="label-o" title="已发货" is-link to="/order-list/order-list?type=1" />
                     <van-cell class= "cellList" icon="bookmark-o" title="待发货" is-link to="/order-list/order-list?type=2" />
                     <!-- <van-cell class= "cellList" icon="orders-o" title="已签收" is-link to="/order-list/order-list?type=3" /> -->
-                    <van-cell class= "cellList" icon="bulb-o" title="设计师通道" is-link to="#" />
+                    <van-cell class= "cellList" icon="bulb-o" title="设计师通道" is-link @click="setDesin"/>
                     <van-cell class= "cellList" icon="apps-o" title="尚未开放" is-link />
                     <van-cell class= "cellList" icon="ellipsis" title="关于我们" is-link to="/home" />
                 </van-col>
@@ -52,6 +52,7 @@
 
 <script>
 function setState(store) {}
+import loginApi from '../../api/main/login/index'
 import Tabbar from '../../components/common/tabbar'
 export default {
     name: 'index',
@@ -79,6 +80,22 @@ export default {
     },
     components: {
         Tabbar      
+    },
+    methods: {
+        setDesin() {
+            this.$dialog.confirm({
+                title: '成为设计师',
+                message: '是否申请成为设计师？'
+            }).then(() => {
+                console.log('成为设计师')
+                this.$dialog.alert({
+                    title: '成功',
+                    message: '恭喜您成为我们的一员！发布作品请登录电脑端网站。'
+                })
+            }).catch(() => {
+                console.log('取消')
+            });
+        }
     }
     
 };

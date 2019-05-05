@@ -1,6 +1,12 @@
 <!--  -->
 <template>
     <div class="login">
+        <van-nav-bar
+            title="登录/注册"
+            left-text="主页"
+            left-arrow
+            @click-left="onClickLeft"
+        />
         <van-cell-group>
             <van-field
                 v-model="form.number"
@@ -52,7 +58,12 @@ export default {
                     path: '/home',
                 })
             })
-        }
+        },
+        onClickLeft() {
+            this.$router.push({
+                path: '/home',
+            })
+        },
     }
 }
 

@@ -40,11 +40,13 @@
                     </a>
                 </van-col>
                 <van-col span="6">
-                    <div class="div-row">
-                        <van-icon class="icon-row" name="gem-o"
-                        style="background-color:#00CCC0;" />
-                        <span>尚未开放</span>
-                    </div>
+                    <router-link to="/login/login">
+                        <div class="div-row">
+                            <van-icon class="icon-row" name="gem-o"
+                            style="background-color:#00CCC0;" />
+                            <span>登录注册</span>
+                        </div>
+                    </router-link>
                 </van-col>
             </van-row>
             <van-row id="jrsx">
