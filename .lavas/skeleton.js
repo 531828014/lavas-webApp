@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-import Skeleton from 'G:\\项目\\lavas-webApp\\core\\Skeleton.vue';
+import Skeleton from 'C:\\Users\\wuzj\\Desktop\\webApp\\lavas-webApp\\core\\Skeleton.vue';
 
 
 export default new Vue({
