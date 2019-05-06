@@ -7,21 +7,20 @@
             left-arrow
             @click-left="onClickLeft"/>
         <!-- 头部返回end -->
-        <van-list
+        <!-- <van-list
             v-model="loading"
             :finished="finished"
             finished-text="没有更多了"
             @load="onLoad"
             class="commoditylist"
-            >
-            <commodity
-                v-for="item in list"
-                :key="item"></commodity>
-        </van-list>
+            > -->
+            <commodity :listData="list"></commodity>
+        <!-- </van-list> -->
   </div>
 </template>
 
 <script>
+import GoodsApi from '../../api/main/goods-manage/index'
 import Commodity from '../../components/common/commodity'
 export default {
     data() {
@@ -35,28 +34,36 @@ export default {
     components: {
         Commodity
     },
-
+    created() {
+        this.getData()
+    },
     computed: {},
 
     methods: {
-        onLoad() {
-        // 异步更新数据
-            setTimeout(() => {
-                for (let i = 0; i < 10; i++) {
-                    this.list.push(this.list.length + 1);
-                }
-                // 加载状态结束
-                this.loading = false;
+        // onLoad() {
+        // // 异步更新数据
+        //     setTimeout(() => {
+        //         for (let i = 0; i < 10; i++) {
+        //             this.list.push(this.list.length + 1);
+        //         }
+        //         // 加载状态结束
+        //         this.loading = false;
 
-                // 数据全部加载完成
-                if (this.list.length >= 40) {
-                    this.finished = true;
-                }
-            }, 500);
-        },
+        //         // 数据全部加载完成
+        //         if (this.list.length >= 40) {
+        //             this.finished = true;
+        //         }
+        //     }, 500);
+        // },
         onClickLeft() {
             this.$router.back()
         },
+        getData() {
+            GoodsApi.List().then(data => {
+                console.log(data)
+                this.list = data.list
+            })
+        }
     }
 }
 

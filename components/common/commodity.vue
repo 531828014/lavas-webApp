@@ -1,15 +1,20 @@
 <!--  -->
 <template>
     <div class="commodity">
-        <div class="commodity-img">
-            <img src="https://img.yzcdn.cn/2.jpg" alt="">
+        <div  class="commoditybox" v-for="item in listData" :key="item.id">
+            <router-link :to="`/commodity-details/commodity-details?ld=${item.id}`">
+            <div class="commodity-img">
+                <img :src="item.imgUrl[0].url" alt="">
+            </div>
+            <div class="commodity-title">
+                <h3>
+                    <span class="h3title">{{item.title}}</span> 
+                    <span class="money-red">￥{{item.sellingPrice}}</span>
+                </h3>
+            </div>
+            </router-link>
         </div>
-        <div class="commodity-title">
-            <h3>
-                <span class="h3title">福ifUI福贵福ifUI福贵福ifUI福贵福ifUI福贵福ifUI福贵</span> 
-                <span class="money-red">￥1700</span>
-            </h3>
-        </div>
+        
     </div>
 </template>
 
@@ -19,19 +24,23 @@ export default {
         return {
         };
     },
-
-    components: {},
-
-    computed: {},
-
+    props: {
+        listData: {
+            type: Array,
+            default: () => []
+        }
+    },
     methods: {}
 }
 
 </script>
 <style lang='scss' scoped>
 .commodity{
-    width: 50%;
     margin-top: 10px;
+    .commoditybox{
+        width: 50%;
+        display: inline-block;
+    }
     .commodity-img{
         width: 90%;
         height: 150px;

@@ -1,21 +1,25 @@
 import axios from 'axios'
-
+import {getUserInfo} from '../utils/storage'
 axios.defaults.timeout = 5000;
-axios.defaults.baseURL = 'https://www.imovietrailer.com/superhero'; //填写域名
+axios.defaults.baseURL = 'http://localhost:5699/'; //填写域名
+axios.defaults.headers['Content-Type'] = 'application/json'
 
-//http request 拦截器
-axios.interceptors.request.use(
-    config => {
-        config.data = JSON.stringify(config.data);
-        config.headers = {
-            'Content-Type': 'application/x-www-form-urlencoded'
+// 设置请求拦截器
+axios.interceptors.request.use(config => {
+    if (config.method === 'post') {
+        if (!config.data.noCarryToken && config.data.noCarryToken !== true) {
+            config.headers.Authorization = 'bearer ' + getUserInfo().token
         }
-        return config;
-    },
-    error => {
-        return Promise.reject(err);
     }
-);
+    if (config.method === 'get') {
+        if (!config.params.noCarryToken && config.params.noCarryToken !== true) {
+            config.headers.Authorization = 'bearer ' + getUserInfo().token
+        }
+    }
+    return config
+}, err => {
+    console.log(err)
+})
 
 //响应拦截器即异常处理
 axios.interceptors.response.use(response => {
@@ -68,41 +72,36 @@ axios.interceptors.response.use(response => {
     return Promise.resolve(err.response)
 })
 
-/**
- * 封装get方法
- * @param url
- * @param data
- * @returns {Promise}
- */
-
-export function fetch(url, params = {}) {
+// 封装get方法
+export function $ajax_fetch(config) {
     return new Promise((resolve, reject) => {
-        axios.get(url, {
-            params: params
+        let option = {
+            method: 'get',
+            params: {}
+        }
+        let {data, ...temp} = config
+        temp.params = data ? data : {}
+        let params = Object.assign(option, temp)
+        axios(params).then(res => {
+            resolve(res)
+        }).catch(err => {
+            reject()
         })
-            .then(response => {
-                resolve(response.data)
-            })
-            .catch(err => {
-                reject(err)
-            })
     })
 }
 
-/**
- * 封装post请求
- * @param url
- * @param data
- * @returns {Promise}
- */
-
-export function post(url, data = {}) {
+// 封装post方法
+export function $ajax_post(config) {
     return new Promise((resolve, reject) => {
-        axios.post(url, data)
-            .then(response => {
-                resolve(response.data);
-            }, err => {
-                reject(err)
-            })
+        let option = {
+            method: 'post',
+            data: {}
+        }
+        let params = Object.assign(option, config)
+        axios(params).then(res => {
+            resolve(res)
+        }).catch(err => {
+            reject()
+        })
     })
 }

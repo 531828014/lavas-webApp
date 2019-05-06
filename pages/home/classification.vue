@@ -1,6 +1,6 @@
 <template>
     <div class="classification">
-        <van-row>
+        <van-row class="tabbarTop">
             <van-col span="24">
                 <h2 class="titleH2">品类</h2>
             </van-col>
@@ -8,39 +8,12 @@
                 <van-search class="searchW" placeholder="请输入搜索关键词" v-model="keyValue" @search="onSearch"/>
             </van-col>
             <van-col  span="24">
-                <a href="/commodity-list/commodity-list">
-                    <div class="class-boxs">
-                        <van-icon class="icon-row" name="friends-o"/>
-                        <h4>精致包袋</h4>
-                    </div>
-                </a>
-                <div class="class-boxs">
-                    <van-icon class="icon-row" name="friends-o"/>
-                    <h4>精致包袋</h4>
-                </div>
-                <div class="class-boxs">
-                    <van-icon class="icon-row" name="friends-o"/>
-                    <h4>精致包袋</h4>
-                </div>
-                <div class="class-boxs">
-                    <van-icon class="icon-row" name="friends-o"/>
-                    <h4>精致包袋</h4>
-                </div>
-                <div class="class-boxs">
-                    <van-icon class="icon-row" name="friends-o"/>
-                    <h4>精致包袋</h4>
-                </div>
-                <div class="class-boxs">
-                    <van-icon class="icon-row" name="friends-o"/>
-                    <h4>精致包袋</h4>
-                </div>
-                <div class="class-boxs">
-                    <van-icon class="icon-row" name="friends-o"/>
-                    <h4>精致包袋</h4>
-                </div>
-                <div class="class-boxs">
-                    <van-icon class="icon-row" name="friends-o"/>
-                    <h4>精致包袋</h4>
+                <div class="class-boxs" v-for="item in list"
+                    :key="item.id">
+                    <router-link to="/commodity-list/commodity-list">
+                    <van-icon class="icon-row" :name="item.icon"/>
+                    <h4>{{item.name}}</h4>
+                    </router-link>
                 </div>
             </van-col>
         </van-row>
@@ -50,20 +23,17 @@
 
 <script>
 function setState(store) {}
+import CategoryApi from '../../api/main/category/index'
 import Tabbar from '../../components/common/tabbar'
 export default {
     name: 'index',
     metaInfo: {
         title: 'Home',
-        titleTemplate: '',
-        meta: [
-            {name: 'keywords', content: ''},
-            {name: 'description', content: ''}
-        ]
     },
     data() {
         return {
             keyValue: '',
+            list: []
         }
     },
     async asyncData({store, route}) {
@@ -72,6 +42,9 @@ export default {
     mounted() {
         this.$refs.tabbar.active = 1
     },
+    created() {
+        this.getData()
+    },
     components: {
         Tabbar      
     },
@@ -79,6 +52,12 @@ export default {
         //搜索关键字
         onSearch(row) {
 
+        },
+        getData() {
+            CategoryApi.List().then(data => {
+                console.log(data)
+                this.list = data.list
+            })
         }
     }
 };
