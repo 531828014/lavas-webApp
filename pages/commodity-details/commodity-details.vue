@@ -69,12 +69,12 @@
             />
             <van-goods-action-big-btn
                 text="加入购物车"
-                @click="onClickBigBtn"
+                @click="addCard"
             />
             <van-goods-action-big-btn
                 primary
                 text="立即购买"
-                @click="onClickBigBtn"
+                @click="addCard"
             />
         </van-goods-action>
         <!-- 加入购物车end -->
@@ -82,6 +82,7 @@
 </template>
 
 <script>
+import CardApi from '../../api/main/card/index'
 import GoodsApi from '../../api/main/goods-manage/index'
 export default {
     data() {
@@ -109,7 +110,26 @@ export default {
         },
         onClickMiniBtn() {
         },
-        onClickBigBtn() {
+        addCard() {
+            if(this.$store.state.userInfo.id) {
+                let opt = {
+                    userId: this.$store.state.userInfo.id,
+                    goodsId: this.fromData.id
+                }
+                CardApi.Add(opt).then(data => {
+                    this.$notify({
+                        message: '加入购物车成功',
+                        duration: 1000,
+                        background: '#72ed18'
+                    });
+                }).catch(() => {
+                    this.$notify('加入购物车失败');
+                })
+            }else{
+                this.$notify('请先登录。。。');
+                this.$router.push({path: '/login/login'}); 
+            }
+            
         },
         onClickLeft() {
             this.$router.back()
