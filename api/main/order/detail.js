@@ -5,7 +5,7 @@ import {createOrder} from '../../model/order'
 export default function(from) {
     return new Promise ((resolve, reject) => {
         let option = {
-            url: '/Order/Detail',
+            url: '/Order/Detial',
             data: {
                 Id: from.id
             }

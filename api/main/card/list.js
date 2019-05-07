@@ -9,14 +9,14 @@ export default function() {
         }
         $ajax_fetch(option).then(data => {
             if (data) {
-                let ret = {}
-                ret.list = data.data.data ? data.data.data.map(item => createCategory ({
-                    id: item.Id,
-                    name: item.name,
-                    category: item.category,
-                    icon: item.icon
-                })) : []
-                resolve(ret)
+                // let ret = {}
+                // ret.list = data.data.data ? data.data.data.map(item => createCategory ({
+                //     id: item.Id,
+                //     name: item.name,
+                //     category: item.category,
+                //     icon: item.icon
+                // })) : []
+                resolve(data)
             }else {
                 reject(data.Msg)
             }
