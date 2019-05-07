@@ -11,14 +11,19 @@
             <van-tab title="我的订单">
                 <card-list></card-list>
             </van-tab>
-            <van-tab title="已发货">已发货</van-tab>
-            <van-tab title="待发货">待发货</van-tab>
-            <van-tab title="已签收">已签收</van-tab>
+            <van-tab title="已发货">
+                <card-list></card-list>
+            </van-tab>
+            <van-tab title="待发货">
+                <card-list></card-list>
+            </van-tab>
+            <!-- <van-tab title="已签收">已签收</van-tab> -->
         </van-tabs>
   </div>
 </template>
 
 <script>
+import OrderApi from '../../api/main/order/index'
 import CardList from '../../components/common/cardlist'
 export default {
     data() {
@@ -39,6 +44,11 @@ export default {
         onClickLeft() {
             this.$router.back()
         },
+        getData() {
+            Promise.all([OrderApi.SendOutList(), OrderApi.NoSendList()]).then(data => {
+                console.log(data)
+            })
+        }
     }
 }
 

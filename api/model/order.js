@@ -1,13 +1,14 @@
 import {initGoods, createGoods} from './goods'
 // 订单
 class Order {
-    constructor({id, userId, orderGoodsId, address, contactNumber, total, sellingPrice, title, goodsId, remark}) {
+    constructor({id, userId, orderGoodsId, address, contactNumber, total, sellingPrice, title, goodsId, remark, status}) {
         this.id = id
         this.userId = userId 
         this.orderGoodsId = orderGoodsId 
         this.address = address 
         this.contactNumber = contactNumber // 联系方式
         this.total = total
+        this.status = status
         this.remark = remark
         this.goods = createGoods({
             id: goodsId,
@@ -30,6 +31,7 @@ export function initOrder() {
         contactNumber: '',
         total: 0,
         goods: initGoods(),
-        remark: ''
+        remark: '',
+        status: ''
     })
 }
