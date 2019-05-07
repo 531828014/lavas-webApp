@@ -69,12 +69,12 @@
             />
             <van-goods-action-big-btn
                 text="加入购物车"
-                @click="addCard"
+                @click="commond('addCard')"
             />
             <van-goods-action-big-btn
                 primary
                 text="立即购买"
-                @click="addCard"
+                @click="commond('addOrder')"
             />
         </van-goods-action>
         <!-- 加入购物车end -->
@@ -82,6 +82,7 @@
 </template>
 
 <script>
+import OrderApi from '../../api/main/order/index'
 import CardApi from '../../api/main/card/index'
 import GoodsApi from '../../api/main/goods-manage/index'
 export default {
@@ -110,26 +111,51 @@ export default {
         },
         onClickMiniBtn() {
         },
-        addCard() {
+        commond(tex) {
             if(this.$store.state.userInfo.id) {
-                let opt = {
-                    userId: this.$store.state.userInfo.id,
-                    goodsId: this.fromData.id
+                switch(tex) {
+                    case 'addCard': this.addCard(); break;
+                    case 'addOrder': this.addOrder(); break;
+                    default : break;
                 }
-                CardApi.Add(opt).then(data => {
-                    this.$notify({
-                        message: '加入购物车成功',
-                        duration: 1000,
-                        background: '#72ed18'
-                    });
-                }).catch(() => {
-                    this.$notify('加入购物车失败');
-                })
             }else{
                 this.$notify('请先登录。。。');
                 this.$router.push({path: '/login/login'}); 
             }
-            
+        },
+        addCard() {
+            let opt = {
+                userId: this.$store.state.userInfo.id,
+                goodsId: this.fromData.id
+            }
+            CardApi.Add(opt).then(data => {
+                this.$notify({
+                    message: '加入购物车成功',
+                    duration: 1000,
+                    background: '#72ed18'
+                });
+            }).catch(() => {
+                this.$notify('加入购物车失败');
+            })
+        },
+        addOrder() {
+            let opt = {
+                userId: this.$store.state.userInfo.id,
+                goodsId: this.fromData.id + '*1', //商品id*数量 拼接
+                // address: this.fromData.address,
+                // contactNumber: this.fromData.contactNumber,
+                total: this.fromData.sellingPrice * 1
+            }
+            OrderApi.Add(opt).then(data => {
+                this.$router.push({
+                    path: '/order-details/order-details', 
+                    query: {
+                        id: data.Id
+                    }
+                }); 
+            }).catch(() => {
+                this.$notify('生成订单失败');
+            })
         },
         onClickLeft() {
             this.$router.back()

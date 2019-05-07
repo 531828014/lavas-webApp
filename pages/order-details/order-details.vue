@@ -21,7 +21,7 @@
             :thumb="imageURL"/>
         <van-cell-group>
             <van-field
-                v-model="message"
+                v-model="fromData.remark"
                 label="备注"
                 type="textarea"
                 placeholder="填写你要说的话"
@@ -30,7 +30,7 @@
             />
         </van-cell-group>
         <van-submit-bar
-            :price="3050"
+            :price="fromData.total"
             button-text="提交订单"
             @submit="onSubmit"/>
         
@@ -38,9 +38,12 @@
 </template>
 
 <script>
+import OrderApi from '../../api/main/order/index'
+import {initOrder} from '../../api/model/order'
 export default {
     data() {
         return {
+            fromData: initOrder(),
             imageURL: 'https://img.yzcdn.cn/2.jpg',
             autosize: {
                 // maxHeight: 100, 
@@ -48,11 +51,9 @@ export default {
             }
         };
     },
-
-    components: {
+    created() {
+        this.getData() 
     },
-
-    computed: {},
 
     methods: {
         onClickLeft() {
@@ -60,6 +61,17 @@ export default {
         },
         onSubmit() {
 
+        },
+        getData() {
+            let opt = {
+                id: this.$route.query.id,
+            }
+            // OrderApi.Detail(opt).then(data => {
+            //     console.log(data)
+            //     this.fromData = data
+            // }).catch(() => {
+            //     this.$notify('加载订单失败');
+            // })
         }
     }
 }
