@@ -14,23 +14,24 @@
             label="广东佛山南海区"
             is-link to="/order-details/address-list/address-list" />
         <van-card
-            num="2"
-            price="2.00"
-            desc="描述信息"  
-            title="商品标题"
-            :thumb="imageURL"/>
+            v-for="item in goodsData"
+            :key="item.id"
+            :num="item.number"
+            :price="item.sellingPrice"
+            :desc="item.designer"  
+            :title="item.title"
+            :thumb="item.imgUrl"/>
         <van-cell-group>
             <van-field
-                v-model="fromData.remark"
+                v-model="orderData.remark"
                 label="备注"
                 type="textarea"
                 placeholder="填写你要说的话"
                 rows="1"
-                :autosize="autosize"
             />
         </van-cell-group>
         <van-submit-bar
-            :price="fromData.total"
+            :price="orderData.total*100"
             button-text="提交订单"
             @submit="onSubmit"/>
         
@@ -40,15 +41,12 @@
 <script>
 import OrderApi from '../../api/main/order/index'
 import {initOrder} from '../../api/model/order'
+import { initGoods } from '../../api/model/goods';
 export default {
     data() {
         return {
-            fromData: initOrder(),
-            imageURL: 'https://img.yzcdn.cn/2.jpg',
-            autosize: {
-                // maxHeight: 100, 
-                // minHeight: 50
-            }
+            orderData: initOrder(),
+            goodsData: initGoods(),
         };
     },
     created() {
@@ -66,12 +64,14 @@ export default {
             let opt = {
                 id: this.$route.query.id,
             }
-            // OrderApi.Detail(opt).then(data => {
-            //     console.log(data)
-            //     this.fromData = data
-            // }).catch(() => {
-            //     this.$notify('加载订单失败');
-            // })
+            OrderApi.Detail(opt).then(data => {
+                console.log(data)
+                this.goodsData = data.goods
+                this.orderData = data.orderDate[0]
+                console.log(data.orderDate)
+            }).catch(() => {
+                this.$notify('加载订单失败');
+            })
         }
     }
 }

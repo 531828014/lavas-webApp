@@ -67,7 +67,7 @@ export default {
                 CardApi.List(this.$store.state.userInfo.id).then(data => {
                     this.listData = data
                 })
-            }else{
+            }else if(!this.$route.query.id) {
                 this.$notify('请先登录。。。');
                 this.$router.push({path: '/login/login'}); 
             }
@@ -92,7 +92,7 @@ export default {
                 let opt = {
                     userId: this.$store.state.userInfo.id,
                     goodsId: this.goodsIdNumber,
-                    total: this.totalMoney
+                    total: this.totalMoney / 100 //vant的单位是分
                 }
                 OrderApi.Add(opt).then(data => {
                     this.$router.push({

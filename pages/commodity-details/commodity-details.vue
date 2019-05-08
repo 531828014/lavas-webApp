@@ -64,7 +64,7 @@
             <van-goods-action-mini-btn
                 icon="cart-o"
                 text="购物车"
-                url="/home/shopping-cart"
+                :url="`/home/shopping-cart?id=${$store.state.userInfo.id}`"
                 @click="onClickMiniBtn"
             />
             <van-goods-action-big-btn
