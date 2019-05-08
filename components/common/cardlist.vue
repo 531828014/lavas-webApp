@@ -3,22 +3,27 @@
     <div class="cardlist">
         <van-row>
             <van-col span="2">
-                <van-checkbox class="checkbox" :name="item" checked-color="#07c160"></van-checkbox>
+                <van-checkbox class="checkbox" :name="listData.id" checked-color="#07c160"></van-checkbox>
             </van-col>
             <van-col span="7">
                 <div class="img-box">
-                    <img class="box-img" v-lazy="image" height="180" width="92%"/>
+                    <img class="box-img" v-lazy="listData.imgUrl[0].url" height="180" width="92%"/>
                 </div>
             </van-col>
             <van-col span="8">
                 <div class="textbox">
-                    <h3>努比亚X</h3>
-                    <span>深空灰 6GB+64GB</span>
-                    <h3 class="money">￥3299</h3>
+                    <h3>{{listData.title}}</h3>
+                    <span>{{listData.designer}}</span>
+                    <h3 class="money">￥{{listData.sellingPrice}}</h3>
                 </div>
             </van-col>
             <van-col span="7">
-                <van-stepper class="number" v-model="value" />
+                <van-stepper 
+                    class="number" 
+                    :min="1" 
+                    v-model="listData.number" 
+                    :integer="true"
+                    @change="onChange"/>
             </van-col>
         </van-row>
     </div>
@@ -26,19 +31,17 @@
 
 <script>
 export default {
-    data() {
-        return {
-            image: 'https://img.yzcdn.cn/2.jpg',
-            value: 1,
-            item: 'A'
-        };
+    props: {
+        listData: {
+            type: Object,
+            default: null
+        }
     },
-
-    components: {},
-
-    computed: {},
-
-    methods: {}
+    methods: {
+        onChange(row) {
+            this.$emit('stepperChange', this.listData, row)
+        }
+    }
 }
 
 </script>

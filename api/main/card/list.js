@@ -1,22 +1,33 @@
 import {$ajax_fetch} from '../../http-service'
-import {createCategory} from '../../model/category'
+import {createGoods} from '../../model/goods'
 
 //
-export default function() {
+export default function(Id) {
     return new Promise ((resolve, reject) => {
         let option = {
             url: '/Card/List',
+            data: {
+                Id
+            } //用户id
         }
         $ajax_fetch(option).then(data => {
             if (data) {
-                // let ret = {}
-                // ret.list = data.data.data ? data.data.data.map(item => createCategory ({
-                //     id: item.Id,
-                //     name: item.name,
-                //     category: item.category,
-                //     icon: item.icon
-                // })) : []
-                resolve(data)
+                let ret = data.data.data ? data.data.data.map(item => createGoods ({
+                    id: item.Id,
+                    title: item.title, 
+                    briefIntroduction: item.briefIntroduction, 
+                    purchasePrice: item.purchasePrice,
+                    sellingPrice: item.sellingPrice,
+                    category: item.category,
+                    designer: item.designer,
+                    number: item.number,
+                    imgUrl: item.imgList ? item.imgList.map(url => {
+                        return{
+                            url: 'http://localhost:5699/' + url
+                        }
+                    }) : []
+                })) : []
+                resolve(ret)
             }else {
                 reject(data.Msg)
             }

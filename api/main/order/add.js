@@ -7,7 +7,7 @@ export default function(from) {
             url: '/Order/Add',
             data: {
                 userId: from.userId,
-                orderGoodsId: from.goodsId, //商品id*数量 拼接
+                orderGoodsId: from.goodsId, //商品id*数量 拼接  数组
                 // address: from.address,
                 // contactNumber: from.contactNumber,
                 total: from.total

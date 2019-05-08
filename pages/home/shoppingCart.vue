@@ -9,14 +9,16 @@
             </van-col>
             <van-col span="24" class="bottomBox">
                 <van-checkbox-group v-model="result" @change="changeCheck">
-                    <card-list></card-list>
-                    <card-list></card-list>
-                    <card-list></card-list>
+                    <card-list 
+                        v-for="item in listData"
+                        :key="item.id"
+                        :listData="item" 
+                        @stepperChange="stepperChange"></card-list>
                 </van-checkbox-group>
             </van-col>
         </van-row>
         <van-submit-bar
-            :price="3050"
+            :price="totalMoney"
             button-text="去结算"
             @submit="onSubmit"
             >
@@ -28,23 +30,22 @@
 
 <script>
 function setState(store) {}
+import CardApi from '../../api/main/card/index'
+import OrderApi from '../../api/main/order/index'
 import CardList from '../../components/common/cardlist'
 import Tabbar from '../../components/common/tabbar'
 export default {
     name: 'index',
     metaInfo: {
-        title: 'Home',
-        titleTemplate: '',
-        meta: [
-            {name: 'keywords', content: ''},
-            {name: 'description', content: ''}
-        ]
+        title: '购物车',
     },
     data() {
         return {
-            imageURL: 'https://img.yzcdn.cn/2.jpg',
             result: [],
-            checked: false
+            listData: [],
+            checked: false,
+            totalMoney: 0,
+            goodsIdNumber: [], //商品id*数量 拼接
         }
     },
     async asyncData({store, route}) {
@@ -57,17 +58,62 @@ export default {
         Tabbar,
         CardList      
     },
+    created() {
+        this.getList()
+    },
     methods: {
+        getList() {
+            if(this.$store.state.userInfo.id) {
+                CardApi.List(this.$store.state.userInfo.id).then(data => {
+                    this.listData = data
+                })
+            }else{
+                this.$notify('请先登录。。。');
+                this.$router.push({path: '/login/login'}); 
+            }
+        },
+        stepperChange(data, row) {
+            console.log(data, row)
+        },
         changeCheck(res) {
-            console.log(res)
+            this.totalMoney = 0
+            this.goodsIdNumber = []
+            if(res.length > 0) {
+                res.forEach(item => {
+                    let index = this.listData.findIndex(it => it.id == item)
+                    this.totalMoney += this.listData[index].sellingPrice * this.listData[index].number * 100
+                    let ret = this.listData[index].id + '*' + this.listData[index].number
+                    this.goodsIdNumber.push(ret)
+                })
+            }
         },
         onSubmit() {
-            this.$router.push({
-                path: '/order-details/order-details'
-            })
+            if(this.result.length > 0) {
+                let opt = {
+                    userId: this.$store.state.userInfo.id,
+                    goodsId: this.goodsIdNumber,
+                    total: this.totalMoney
+                }
+                OrderApi.Add(opt).then(data => {
+                    this.$router.push({
+                        path: '/order-details/order-details',
+                        query: {
+                            id: data.Id
+                        }
+                    })
+                })
+            }else{
+                this.$notify('请先选择商品。');
+            }
+            
         },
-        changeAll() {
-            console.log('All')
+        changeAll(res) {
+            this.result = []
+            if(res) {
+                this.listData.forEach(item => {
+                    this.result.push(item.id)
+                });
+            }
         }
     }
 };
