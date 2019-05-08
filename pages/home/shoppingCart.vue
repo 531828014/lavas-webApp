@@ -63,11 +63,13 @@ export default {
     },
     methods: {
         getList() {
-            if(this.$store.state.userInfo.id) {
+
+            if(this.$store.state.userInfo.id || this.$route.query.id) {
+                let id = this.$store.state.userInfo.id ? this.$store.state.userInfo.id : this.$route.query.id
                 CardApi.List(this.$store.state.userInfo.id).then(data => {
                     this.listData = data
                 })
-            }else if(!this.$route.query.id) {
+            }else {
                 this.$notify('请先登录。。。');
                 this.$router.push({path: '/login/login'}); 
             }
