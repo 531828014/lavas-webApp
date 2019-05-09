@@ -20,7 +20,8 @@ export default function(from) {
                     address: item.address,
                     contactNumber: item.contactNumber,
                     remark: item.remark,
-                    total: item.total
+                    total: item.total,
+                    status: item.status
                 })) : []
                 resolve(ret)
             }else {

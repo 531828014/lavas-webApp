@@ -5,6 +5,8 @@ import SendOutList from './sendOutList'
 import NoSendList from './noSendList'
 import AfterSale from './after-sale'
 import ReceiveGoods from './receiveGoods'
+import UserList from './myList'
+import SureList from './sureList'
 export default {
     Add,
     Detail,
@@ -13,4 +15,6 @@ export default {
     NoSendList,
     AfterSale, //申请售后
     ReceiveGoods, //确认收货
+    UserList,
+    SureList, //已签收列表
 }
