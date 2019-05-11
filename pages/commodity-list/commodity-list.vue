@@ -40,29 +40,33 @@ export default {
     computed: {},
 
     methods: {
-        // onLoad() {
-        // // 异步更新数据
-        //     setTimeout(() => {
-        //         for (let i = 0; i < 10; i++) {
-        //             this.list.push(this.list.length + 1);
-        //         }
-        //         // 加载状态结束
-        //         this.loading = false;
-
-        //         // 数据全部加载完成
-        //         if (this.list.length >= 40) {
-        //             this.finished = true;
-        //         }
-        //     }, 500);
-        // },
         onClickLeft() {
             this.$router.back()
         },
         getData() {
-            GoodsApi.List().then(data => {
-                console.log(data)
-                this.list = data.list
-            })
+            if(this.$route.query.category) {
+                GoodsApi.CategorySearch(this.$route.query.category).then(data => {
+                    console.log(data)
+                    this.list = data.list
+                })
+            }else if (this.$route.query.keyWord) {
+                GoodsApi.Search(this.$route.query.keyWord).then(data => {
+                    console.log(data)
+                    this.list = data.list
+                    // this.$router.push({
+                    //     path: '/order-details/order-details', 
+                    //     query: {
+                    //         id: data.Id
+                    //     }
+                    // }); 
+                }) 
+            }else{
+                GoodsApi.List().then(data => {
+                    console.log(data)
+                    this.list = data.list
+                })
+            }
+            
         }
     }
 }

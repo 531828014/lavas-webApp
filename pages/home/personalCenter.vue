@@ -70,7 +70,6 @@ export default {
         }
     },
     created() {
-        console.log(this.$store.state.userInfo)
     },
     async asyncData({store, route}) {
         setState(store);
@@ -87,14 +86,11 @@ export default {
                 title: '成为设计师',
                 message: '是否申请成为设计师？'
             }).then(() => {
-                console.log('成为设计师')
                 this.$dialog.alert({
                     title: '成功',
                     message: '恭喜您成为我们的一员！发布作品请登录电脑端网站。'
                 })
-            }).catch(() => {
-                console.log('取消')
-            });
+            })
         }
     }
     

@@ -111,7 +111,6 @@ export default {
     },
     created() {
         this.getData()
-        console.log(this.$store.state.userInfo)
     },
     mounted() {
         this.$refs.tabbar.active = 0
@@ -122,11 +121,15 @@ export default {
     methods: {
         //搜索关键字
         onSearch(row) {
-
+            this.$router.push({
+                path: '/commodity-list/commodity-list', 
+                query: {
+                    keyWord: row
+                }
+            }); 
         },
         getData() {
-            Promise.all([GoodsApi.Carousel(),GoodsApi.New()]).then(data => {
-                console.log(data)
+            Promise.all([GoodsApi.Carousel(), GoodsApi.New()]).then(data => {
                 data[0].list.forEach(item => {
                     let opt = {
                         id: item.id,

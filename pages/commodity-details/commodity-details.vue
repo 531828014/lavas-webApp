@@ -102,7 +102,6 @@ export default {
     methods: {
         getData() {
             GoodsApi.Detial(this.$route.query.ld).then(data => {
-                console.log(data)
                 this.fromData = data
                 data.imgUrl.forEach(item => {
                     this.images.push(item.url)

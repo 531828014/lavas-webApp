@@ -65,10 +65,8 @@ export default {
                 id: this.$route.query.id,
             }
             OrderApi.Detail(opt).then(data => {
-                console.log(data)
                 this.goodsData = data.goods
                 this.orderData = data.orderDate[0]
-                console.log(data.orderDate)
             }).catch(() => {
                 this.$notify('加载订单失败');
             })

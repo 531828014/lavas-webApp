@@ -11,7 +11,6 @@ export default function(from) {
                 number: from.number ? from.number : 1
             }
         }
-        console.log(option)
         $ajax_post(option).then(data => {
             if (data) {
                 resolve(data)

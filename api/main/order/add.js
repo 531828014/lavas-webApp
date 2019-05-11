@@ -15,7 +15,6 @@ export default function(from) {
         }
         $ajax_post(option).then(data => {
             if (data.data.Result) {
-                console.log(data.data.data)
                 resolve(data.data.data)
             } else {
                 reject()

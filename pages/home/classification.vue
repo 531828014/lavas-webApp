@@ -9,11 +9,10 @@
             </van-col>
             <van-col  span="24">
                 <div class="class-boxs" v-for="item in list"
-                    :key="item.id">
-                    <router-link to="/commodity-list/commodity-list">
+                    :key="item.id"
+                    @click="categorySearch(item)">
                     <van-icon class="icon-row" :name="item.icon"/>
                     <h4>{{item.name}}</h4>
-                    </router-link>
                 </div>
             </van-col>
         </van-row>
@@ -24,6 +23,7 @@
 <script>
 function setState(store) {}
 import CategoryApi from '../../api/main/category/index'
+import GoodsApi from '../../api/main/goods-manage/index'
 import Tabbar from '../../components/common/tabbar'
 export default {
     name: 'index',
@@ -51,13 +51,26 @@ export default {
     methods: {
         //搜索关键字
         onSearch(row) {
-
+            this.$router.push({
+                path: '/commodity-list/commodity-list', 
+                query: {
+                    keyWord: row
+                }
+            }); 
         },
         getData() {
             CategoryApi.List().then(data => {
-                console.log(data)
                 this.list = data.list
             })
+        },
+        //根据类别搜索商品
+        categorySearch(ret) {
+            this.$router.push({
+                path: '/commodity-list/commodity-list', 
+                query: {
+                    category: ret.category
+                }
+            }); 
         }
     }
 };
