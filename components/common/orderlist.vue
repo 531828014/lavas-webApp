@@ -58,10 +58,10 @@ export default {
         },
         afterSale() {
             let opt = {
-                id: this.listData.id,
+                orderId: this.listData.id,
                 userId: this.$store.state.userInfo.id
             }
-            OrderApi.AfterSale(this.listData).then(data => {
+            OrderApi.AfterSale(opt).then(data => {
                 this.$notify({
                     message: '已提交售后申请，请耐心等待',
                     duration: 2000,
