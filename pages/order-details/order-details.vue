@@ -58,7 +58,24 @@ export default {
             this.$router.back()
         },
         onSubmit() {
-
+            console.log(this.orderData, this.goodsData)
+            let opt = {
+                Id: this.orderData.id,
+                address: this.orderData.address ? this.orderData.address : '广东佛山南海区',
+                contactNumber: this.orderData.contactNumber ? this.orderData.contactNumber : '李思凡   156789456131'
+            }
+            OrderApi.Update(opt).then(data => {
+                this.$notify({
+                    message: '付款成功',
+                    duration: 1000,
+                    background: '#72ed18'
+                });
+                this.$router.push({
+                    path: '/home', 
+                }); 
+            }).catch(() => {
+                this.$notify('加载订单失败');
+            })
         },
         getData() {
             let opt = {

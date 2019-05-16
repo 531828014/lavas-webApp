@@ -18,7 +18,7 @@
             </van-col>
         </van-row>
         <van-submit-bar
-            :price="totalMoney"
+            :price="totalMoney * 100"
             button-text="去结算"
             @submit="onSubmit"
             >
@@ -83,7 +83,7 @@ export default {
             if(res.length > 0) {
                 res.forEach(item => {
                     let index = this.listData.findIndex(it => it.id == item)
-                    this.totalMoney += this.listData[index].sellingPrice * this.listData[index].number * 100
+                    this.totalMoney += this.listData[index].sellingPrice * this.listData[index].number
                     let ret = this.listData[index].id + '*' + this.listData[index].number
                     this.goodsIdNumber.push(ret)
                 })
@@ -94,7 +94,7 @@ export default {
                 let opt = {
                     userId: this.$store.state.userInfo.id,
                     goodsId: this.goodsIdNumber,
-                    total: this.totalMoney / 100 //vant的单位是分
+                    total: this.totalMoney
                 }
                 OrderApi.Add(opt).then(data => {
                     this.$router.push({
