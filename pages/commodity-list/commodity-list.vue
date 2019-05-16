@@ -46,23 +46,14 @@ export default {
         getData() {
             if(this.$route.query.category) {
                 GoodsApi.CategorySearch(this.$route.query.category).then(data => {
-                    console.log(data)
                     this.list = data.list
                 })
             }else if (this.$route.query.keyWord) {
                 GoodsApi.Search(this.$route.query.keyWord).then(data => {
-                    console.log(data)
                     this.list = data.list
-                    // this.$router.push({
-                    //     path: '/order-details/order-details', 
-                    //     query: {
-                    //         id: data.Id
-                    //     }
-                    // }); 
                 }) 
             }else{
                 GoodsApi.List().then(data => {
-                    console.log(data)
                     this.list = data.list
                 })
             }

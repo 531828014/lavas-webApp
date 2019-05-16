@@ -59,7 +59,6 @@ export default {
         OrderList
     },
     created() {
-        // console.log(this.$route.query.type)
         this.getData()
     },
     computed: {},

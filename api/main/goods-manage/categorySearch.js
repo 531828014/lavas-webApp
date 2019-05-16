@@ -5,7 +5,9 @@ export default function(category) {
     return new Promise ((resolve, reject) => {
         let option = {
             url: '/Commodity/CategorySearch',
-            category
+            data: {
+                category: category
+            }
         }
         $ajax_fetch(option).then(data => {
             if (data.data.Result) {
