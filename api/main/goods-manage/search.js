@@ -5,7 +5,9 @@ export default function(messge) {
     return new Promise ((resolve, reject) => {
         let option = {
             url: '/Commodity/Search',
-            messge
+            data: {
+                messge
+            }
         }
         $ajax_fetch(option).then(data => {
             if (data.data.Result) {

@@ -12,7 +12,16 @@ export default function(from) {
         }
         $ajax_post(option).then(data => {
             if (data.data.Result) {
-                let ret = data.data
+                let item = data.data.data
+                let ret = {
+                    id: item.Id,
+                    number: item.number, 
+                    password: item.password, 
+                    name: item.name,
+                    contactNumber: item.contactNumber,
+                    idNumber: item.idNumber,
+                    email: item.email,
+                }
                 resolve(ret)
             } else {
                 reject()

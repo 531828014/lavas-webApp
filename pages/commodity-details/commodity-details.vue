@@ -143,7 +143,8 @@ export default {
                 goodsId: this.fromData.id + '*1', //商品id*数量 拼接
                 // address: this.fromData.address,
                 // contactNumber: this.fromData.contactNumber,
-                total: this.fromData.sellingPrice * 1
+                total: this.fromData.sellingPrice * 1,
+                typeId: this.fromData.typeId
             }
             OrderApi.Add(opt).then(data => {
                 this.$router.push({

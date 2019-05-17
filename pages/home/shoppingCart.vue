@@ -63,7 +63,7 @@ export default {
     },
     methods: {
         getList() {
-
+            console.log(this.$store.state.userInfo, this.$route.query)
             if(this.$store.state.userInfo.id || this.$route.query.id) {
                 let id = this.$store.state.userInfo.id ? this.$store.state.userInfo.id : this.$route.query.id
                 CardApi.List(this.$store.state.userInfo.id).then(data => {
@@ -94,7 +94,8 @@ export default {
                 let opt = {
                     userId: this.$store.state.userInfo.id,
                     goodsId: this.goodsIdNumber,
-                    total: this.totalMoney
+                    total: this.totalMoney,
+                    typeId: this.fromData.typeId
                 }
                 OrderApi.Add(opt).then(data => {
                     this.$router.push({

@@ -22,6 +22,7 @@ export default function(Id) {
                     category: table.category,
                     designer: table.designer,
                     number: table.number,
+                    typeId: table.typeId,
                     imgUrl: table.imgList ? table.imgList.map(url => {
                         return{
                             url: 'http://localhost:5699/' + url

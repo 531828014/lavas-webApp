@@ -18,6 +18,7 @@ export default function() {
                     category: item.category,
                     designer: item.designer,
                     number: item.number,
+                    typeId: item.typeId,
                     imgUrl: item.imgUrl ? item.imgUrl.map(url => {
                         return{
                             url: 'http://localhost:5699/' + url

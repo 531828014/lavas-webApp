@@ -10,7 +10,8 @@ export default function(from) {
                 orderGoodsId: from.goodsId, //商品id*数量 拼接  数组
                 // address: from.address,
                 // contactNumber: from.contactNumber,
-                total: from.total
+                total: from.total,
+                typeId: from.typeId
             }
         }
         $ajax_post(option).then(data => {

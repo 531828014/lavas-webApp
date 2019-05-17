@@ -48,7 +48,7 @@ export default {
         },
         addUser() {
             LoginApi.AddUser(this.form).then(data => {
-                this.$store.state.userInfo = data.data
+                this.$store.state.userInfo = data
                 this.$notify({
                     message: data.Msg,
                     duration: 1000,

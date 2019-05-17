@@ -1,6 +1,6 @@
 // 商品
 class Goods {
-    constructor({id, title, briefIntroduction, purchasePrice, sellingPrice, category, designer, imgUrl, number}) {
+    constructor({id, title, briefIntroduction, purchasePrice, sellingPrice, category, designer, imgUrl, number, typeId}) {
         this.id = id
         this.title = title // 标题
         this.briefIntroduction = briefIntroduction // 简介
@@ -10,6 +10,7 @@ class Goods {
         this.designer = designer // 厂家/设计师
         this.imgUrl = imgUrl // 图片地址
         this.number = number // 数量
+        this.typeId = typeId //设计师id
     }
 }
 
@@ -27,6 +28,7 @@ export function initGoods() {
         category: '',
         designer: '',
         imgUrl: [],
-        number: 0
+        number: 0,
+        typeId: '10000'
     })
 }
