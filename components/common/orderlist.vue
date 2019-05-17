@@ -5,25 +5,26 @@
             <!-- <van-col span="2">
                 <van-checkbox class="checkbox" :name="listData.id" checked-color="#07c160"></van-checkbox>
             </van-col> -->
-            <van-col span="8">
+            <van-col span="10">
                 <div class="img-box">
                     <!-- <img class="box-img" v-lazy="listData.imgUrl[0].url" height="180" width="92%"/> -->
                     <label>订单号：</label>
                     <span>{{listData.id}}</span>
+                    <label>订单状态：</label>
                     <span>{{listData.status}}</span>
+                    <h3 class="money">￥{{listData.total}}</h3>
                 </div>
             </van-col>
             <van-col span="9">
                 <div class="textbox">
-                    <h3>{{listData.title}}</h3>
+                    <h3>{{listData.contactNumber}}</h3>
                     <span>{{listData.address}}</span>
-                    <h3 class="money">￥{{listData.total}}</h3>
                 </div>
             </van-col>
-            <van-col span="7">
-                <div>
-                    <van-button size="mini" @click="afterSale">申请售后</van-button>
-                    <van-button v-if="listData.status != '已签收'" size="mini" @click="receiveGoods">确认收货</van-button>
+            <van-col span="5">
+                <div style="text-align: right;">
+                    <van-button v-if="listData.status == '已发货' || listData.status == '已签收'" size="mini" @click="afterSale">申请售后</van-button>
+                    <van-button v-if="listData.status == '已发货'" size="mini" @click="receiveGoods">确认收货</van-button>
                 </div>
             </van-col>
         </van-row>

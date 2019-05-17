@@ -8,6 +8,7 @@ import ReceiveGoods from './receiveGoods'
 import UserList from './myList'
 import SureList from './sureList'
 import Update from './update'
+import AferList from './aferList'
 export default {
     Add,
     Detail,
@@ -19,4 +20,5 @@ export default {
     UserList,
     SureList, //已签收列表
     Update, //去付款
+    AferList,
 }

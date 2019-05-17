@@ -36,6 +36,13 @@
                     :listData="item"
                     @updata="updata"></order-list>
             </van-tab>
+            <van-tab title="售后订单">
+                <order-list 
+                    v-for="item in afterList"
+                    :key="item.id"
+                    :listData="item"
+                    @updata="updata"></order-list>
+            </van-tab>
         </van-tabs>
   </div>
 </template>
@@ -50,7 +57,8 @@ export default {
             listData: {},
             sendOutlist: {},
             noSendList: {},
-            sureList: {}
+            sureList: {},
+            afterList: {},
         };
     },
     props: {
@@ -72,11 +80,12 @@ export default {
                 let opt = {
                     id: this.$store.state.userInfo.id ? this.$store.state.userInfo.id : this.$route.query.id
                 }
-                Promise.all([OrderApi.SendOutList(opt), OrderApi.NoSendList(opt), OrderApi.UserList(opt), OrderApi.SureList(opt)]).then(data => {
+                Promise.all([OrderApi.SendOutList(opt), OrderApi.NoSendList(opt), OrderApi.UserList(opt), OrderApi.SureList(opt), OrderApi.AferList(opt)]).then(data => {
                     this.listData = data[2]
                     this.sendOutlist = data[0]
                     this.noSendList = data[1]
                     this.sureList = data[3]
+                    this.afterList = data[4]
                 })
             }else {
                 this.$notify('请先登录。。。');
