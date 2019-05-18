@@ -89,6 +89,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 function setState(store) {}
 import GoodsApi from '../../api/main/goods-manage/index'
 import Tabbar from '../../components/common/tabbar'
@@ -112,8 +113,14 @@ export default {
     created() {
         this.getData()
     },
+    computed: {
+        ...mapState({
+            serverAddress: state => state.serverAddress,
+        }),
+    },
     mounted() {
         this.$refs.tabbar.active = 0
+        console.log(this.serverAddress)
     },
     components: {
         Tabbar      
