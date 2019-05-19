@@ -2,134 +2,134 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
     
-import _15582324043359d49a922ebc8a6d77ca82c0a74289b98 from '@/pages/Appshell.vue';
+import _15582416404379d49a922ebc8a6d77ca82c0a74289b98 from '@/pages/Appshell.vue';
     
 
     
-import _1558232404335cd64960f6a8329d0b9f6f14f0e4377b0 from '@/pages/commodity-details/commodity-details.vue';
+import _1558241640437cd64960f6a8329d0b9f6f14f0e4377b0 from '@/pages/commodity-details/commodity-details.vue';
     
 
     
-import _15582324043356db3c7567ebd5f7f800d0910ae3bbda9 from '@/pages/commodity-list/commodity-list.vue';
+import _15582416404376db3c7567ebd5f7f800d0910ae3bbda9 from '@/pages/commodity-list/commodity-list.vue';
     
 
     
-import _1558232404335d2462dcf0c7beccd286c658e08187914 from '@/pages/Error.vue';
+import _1558241640437d2462dcf0c7beccd286c658e08187914 from '@/pages/Error.vue';
     
 
     
-import _1558232404335eea99934ecc5e765d5736c35f83c1614 from '@/pages/home/classification.vue';
+import _1558241640437eea99934ecc5e765d5736c35f83c1614 from '@/pages/home/classification.vue';
     
 
     
-import _15582324043359f95ef222a6266ff3feeaf6e90743c57 from '@/pages/home/Index.vue';
+import _15582416404379f95ef222a6266ff3feeaf6e90743c57 from '@/pages/home/Index.vue';
     
 
     
-import _155823240433562a9da8e9a5730214b9c96eed7202276 from '@/pages/home/personalCenter.vue';
+import _155824164043762a9da8e9a5730214b9c96eed7202276 from '@/pages/home/personalCenter.vue';
     
 
     
-import _155823240433596f3045a67f46b47bd58909ab9906ea0 from '@/pages/home/shoppingCart.vue';
+import _155824164043796f3045a67f46b47bd58909ab9906ea0 from '@/pages/home/shoppingCart.vue';
     
 
     
-import _155823240433577b90520acfcd103f73ef7e384798f5d from '@/pages/login/login.vue';
+import _155824164043777b90520acfcd103f73ef7e384798f5d from '@/pages/login/login.vue';
     
 
     
-import _15582324043356c19ed02edff12e8e9a2a62eb4ad84f3 from '@/pages/order-details/address-editor/address-editor.vue';
+import _15582416404376c19ed02edff12e8e9a2a62eb4ad84f3 from '@/pages/order-details/address-editor/address-editor.vue';
     
 
     
-import _155823240433592d1a41a1997e432a9ad44bbeab28598 from '@/pages/order-details/address-list/address-list.vue';
+import _155824164043792d1a41a1997e432a9ad44bbeab28598 from '@/pages/order-details/address-list/address-list.vue';
     
 
     
-import _1558232404335e7353e4686f60dda15a90cef86cb2d0c from '@/pages/order-details/order-details.vue';
+import _1558241640437e7353e4686f60dda15a90cef86cb2d0c from '@/pages/order-details/order-details.vue';
     
 
     
-import _15582324043359431bc401043754107f72d17bdb3d570 from '@/pages/order-list/order-list.vue';
+import _15582416404379431bc401043754107f72d17bdb3d570 from '@/pages/order-list/order-list.vue';
     
 
 
 let routes = [
     {
         "path": "/appshell",
-        "component": _15582324043359d49a922ebc8a6d77ca82c0a74289b98,
+        "component": _15582416404379d49a922ebc8a6d77ca82c0a74289b98,
         "meta": {},
         "name": "appshell"
     },
     {
         "path": "/commodity-details/commodity-details",
-        "component": _1558232404335cd64960f6a8329d0b9f6f14f0e4377b0,
+        "component": _1558241640437cd64960f6a8329d0b9f6f14f0e4377b0,
         "meta": {},
         "name": "commodity-detailsCommodity-details"
     },
     {
         "path": "/commodity-list/commodity-list",
-        "component": _15582324043356db3c7567ebd5f7f800d0910ae3bbda9,
+        "component": _15582416404376db3c7567ebd5f7f800d0910ae3bbda9,
         "meta": {},
         "name": "commodity-listCommodity-list"
     },
     {
         "path": "/home/classification",
-        "component": _1558232404335eea99934ecc5e765d5736c35f83c1614,
+        "component": _1558241640437eea99934ecc5e765d5736c35f83c1614,
         "meta": {},
         "name": "homeClassification"
     },
     {
         "path": "/home",
-        "component": _15582324043359f95ef222a6266ff3feeaf6e90743c57,
+        "component": _15582416404379f95ef222a6266ff3feeaf6e90743c57,
         "meta": {},
         "name": "home"
     },
     {
         "path": "/home/personal-center",
-        "component": _155823240433562a9da8e9a5730214b9c96eed7202276,
+        "component": _155824164043762a9da8e9a5730214b9c96eed7202276,
         "meta": {},
         "name": "homePersonalCenter"
     },
     {
         "path": "/home/shopping-cart",
-        "component": _155823240433596f3045a67f46b47bd58909ab9906ea0,
+        "component": _155824164043796f3045a67f46b47bd58909ab9906ea0,
         "meta": {},
         "name": "homeShoppingCart"
     },
     {
         "path": "/login/login",
-        "component": _155823240433577b90520acfcd103f73ef7e384798f5d,
+        "component": _155824164043777b90520acfcd103f73ef7e384798f5d,
         "meta": {},
         "name": "loginLogin"
     },
     {
         "path": "/order-details/address-editor/address-editor",
-        "component": _15582324043356c19ed02edff12e8e9a2a62eb4ad84f3,
+        "component": _15582416404376c19ed02edff12e8e9a2a62eb4ad84f3,
         "meta": {},
         "name": "order-detailsAddress-editorAddress-editor"
     },
     {
         "path": "/order-details/address-list/address-list",
-        "component": _155823240433592d1a41a1997e432a9ad44bbeab28598,
+        "component": _155824164043792d1a41a1997e432a9ad44bbeab28598,
         "meta": {},
         "name": "order-detailsAddress-listAddress-list"
     },
     {
         "path": "/order-details/order-details",
-        "component": _1558232404335e7353e4686f60dda15a90cef86cb2d0c,
+        "component": _1558241640437e7353e4686f60dda15a90cef86cb2d0c,
         "meta": {},
         "name": "order-detailsOrder-details"
     },
     {
         "path": "/order-list/order-list",
-        "component": _15582324043359431bc401043754107f72d17bdb3d570,
+        "component": _15582416404379431bc401043754107f72d17bdb3d570,
         "meta": {},
         "name": "order-listOrder-list"
     },
     {
         "path": "/error",
-        "component": _1558232404335d2462dcf0c7beccd286c658e08187914,
+        "component": _1558241640437d2462dcf0c7beccd286c658e08187914,
         "meta": {},
         "name": "error",
         "alias": "*"
