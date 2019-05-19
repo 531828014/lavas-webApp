@@ -1,13 +1,14 @@
 <!--  -->
 <template>
-    <div class="login">
+    <div>
         <van-nav-bar
             title="登录/注册"
             left-text="主页"
             left-arrow
             @click-left="onClickLeft"
         />
-        <van-cell-group>
+        <div class="login">
+            <van-cell-group>
             <van-field
                 v-model="form.number"
                 required
@@ -22,9 +23,14 @@
                 placeholder="请输入密码"
                 required
             />
-        </van-cell-group>
-        <van-button type="primary" @click="login">登录</van-button>
-        <van-button type="info" @click="addUser">注册</van-button>
+            </van-cell-group>
+            <div class="btn">
+                <van-button type="primary" size="small" @click="login">登录</van-button>
+                <van-button type="info" size="small" @click="addUser">注册</van-button>
+            </div>
+            
+        </div>
+        
     </div>
 </template>
 
@@ -70,6 +76,9 @@ export default {
 </script>
 <style lang='scss' scoped>
 .login{
-    padding: 200px 0;
+    padding: 50px 10px;
+    .btn{
+        padding: 20px 0px;
+    }
 }
 </style>

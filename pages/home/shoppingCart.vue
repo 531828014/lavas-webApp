@@ -46,6 +46,7 @@ export default {
             checked: false,
             totalMoney: 0,
             goodsIdNumber: [], //商品id*数量 拼接
+            typeId: ''
         }
     },
     async asyncData({store, route}) {
@@ -68,6 +69,7 @@ export default {
                 let id = this.$store.state.userInfo.id ? this.$store.state.userInfo.id : this.$route.query.id
                 CardApi.List(this.$store.state.userInfo.id).then(data => {
                     this.listData = data
+                    console.log(data)
                 })
             }else {
                 this.$notify('请先登录。。。');
@@ -78,6 +80,7 @@ export default {
             console.log(data, row)
         },
         changeCheck(res) {
+            console.log(res)
             this.totalMoney = 0
             this.goodsIdNumber = []
             if(res.length > 0) {
@@ -88,6 +91,9 @@ export default {
                     this.goodsIdNumber.push(ret)
                 })
             }
+            let index = this.listData.findIndex(item => item.id == res)
+            this.typeId = this.listData[index].typeId
+            console.log(this.typeId)
         },
         onSubmit() {
             if(this.result.length > 0) {
@@ -95,7 +101,7 @@ export default {
                     userId: this.$store.state.userInfo.id,
                     goodsId: this.goodsIdNumber,
                     total: this.totalMoney,
-                    typeId: this.fromData.typeId
+                    typeId: this.typeId
                 }
                 OrderApi.Add(opt).then(data => {
                     this.$router.push({

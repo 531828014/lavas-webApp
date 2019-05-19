@@ -5,6 +5,9 @@ export default function() {
     return new Promise ((resolve, reject) => {
         let option = {
             url: '/Commodity/List',
+            data: {
+                Id: '10000'
+            }
         }
         $ajax_fetch(option).then(data => {
             if (data) {
