@@ -20,7 +20,7 @@ export default function(from) {
                     contactNumber: item.contactNumber,
                     remark: item.remark,
                     total: item.total
-                })) : []
+                })) : []/*  */
                 ret.goods = data.data.goods ? data.data.goods.map(item => createGoods ({
                     id: item.Id,
                     title: item.title, 
@@ -31,11 +31,6 @@ export default function(from) {
                     designer: item.designer,
                     number: item.number,
                     imgUrl: item.imgList ? 'http://localhost:5699/' + item.imgList[0] : ''
-                    // imgUrl: item.imgList ? item.imgList.map(url => {
-                    //     return{
-                    //         url: 'http://localhost:5699/' + url
-                    //     }
-                    // }) : []
                 })) : []
                 resolve(ret)
             }else {
